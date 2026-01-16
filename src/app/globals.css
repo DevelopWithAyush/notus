@@ -1,26 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --brand-color: #f17463;
+  --black-color: #000000;
+  --font-inter: 'Inter', sans-serif;
+  --font-open-sans: 'Open Sans', sans-serif;
+  --pattern-fg: #000000;
+  --font-space-mono: 'Space Mono', monospace;
+  --color-dots: #000000;
+  --color-line: blue;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand: var(--brand-color);
+  --color-black: var(--black-color);
+  --font-inter: var(--font-inter);
+  --font-open-sans: var(--font-open-sans);
+  --font-space-mono: var(--font-space-mono);
+  --color-dots: var(--color-dots);
+  --color-line: var(--color-line); 
+    --animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
+    
+      @keyframes orbit {
+        0% {
+          transform: rotate(calc(var(--angle) * 1deg)) translateX(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+        }
+    
+        100% {
+          transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateX(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
+        }
+      }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #000000;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-brand: #f17463;
+  --color-black: #ffffff;
+  --font-inter: 'Inter', sans-serif;
+  --font-open-sans: 'Open Sans', sans-serif;
+  --pattern-fg: #ffffff;
+  --font-space-mono: 'Space Mono', monospace;
+  --color-dots: #ffffff;
+  --color-line: blue;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-black);
+  font-family: var(--font-inter), var(--font-open-sans);
 }
